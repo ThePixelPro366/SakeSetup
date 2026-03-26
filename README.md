@@ -15,89 +15,7 @@ To see more about Sake, check out the [official repository](https://github.com/S
 * Backblaze account (free)
 * Render account (free)
 
-# Part 1 – GitHub (Fork the Repository)
-
-1. Go to [github.com/Sudashiii/Sake](https://github.com/Sudashiii/Sake)
-2. Click **"Fork"** → **"Create Fork"**
-3. You now have your own copy at [`github.com/YOURNAME/Sake`](http://github.com/YOURNAME/Sake)
-
-# Part 2 – Fix the Dockerfile
-
-In your fork, go to `sake/Dockerfile` and click the **pencil (edit)** icon.
-
-Replace the entire contents with the following(this tells render to actually use the .env file while building **otherwise your deploy will fail!**):
-
-    FROM oven/bun:1 AS deps
-    WORKDIR /app
-    RUN if command -v apk >/dev/null 2>&1; then \
-    		apk add --no-cache python3 make g++; \
-    	elif command -v apt-get >/dev/null 2>&1; then \
-    		apt-get update && apt-get install -y --no-install-recommends python3 make g++ && rm -rf /var/lib/apt/lists/*; \
-    	else \
-    		echo "Unsupported base image: no apk/apt-get found" >&2; exit 1; \
-    	fi
-    COPY package.json bun.lock ./
-    COPY .npmrc ./
-    RUN bun install --frozen-lockfile --omit peer
-    
-    FROM deps AS migrator
-    COPY . .
-    
-    FROM deps AS builder
-    ARG PUBLIC_WEBAPP_VERSION=dev-local
-    ARG PUBLIC_WEBAPP_GIT_TAG=
-    ARG PUBLIC_WEBAPP_COMMIT_SHA=
-    ARG PUBLIC_WEBAPP_RELEASED_AT=
-    ARG LIBSQL_URL
-    ARG LIBSQL_AUTH_TOKEN
-    ARG S3_ENDPOINT
-    ARG S3_REGION
-    ARG S3_BUCKET
-    ARG S3_ACCESS_KEY_ID
-    ARG S3_SECRET_ACCESS_KEY
-    ARG S3_FORCE_PATH_STYLE
-    ARG ACTIVATED_PROVIDERS
-    ENV PUBLIC_WEBAPP_VERSION=${PUBLIC_WEBAPP_VERSION}
-    ENV PUBLIC_WEBAPP_GIT_TAG=${PUBLIC_WEBAPP_GIT_TAG}
-    ENV PUBLIC_WEBAPP_COMMIT_SHA=${PUBLIC_WEBAPP_COMMIT_SHA}
-    ENV PUBLIC_WEBAPP_RELEASED_AT=${PUBLIC_WEBAPP_RELEASED_AT}
-    ENV LIBSQL_URL=${LIBSQL_URL}
-    ENV LIBSQL_AUTH_TOKEN=${LIBSQL_AUTH_TOKEN}
-    ENV S3_ENDPOINT=${S3_ENDPOINT}
-    ENV S3_REGION=${S3_REGION}
-    ENV S3_BUCKET=${S3_BUCKET}
-    ENV S3_ACCESS_KEY_ID=${S3_ACCESS_KEY_ID}
-    ENV S3_SECRET_ACCESS_KEY=${S3_SECRET_ACCESS_KEY}
-    ENV S3_FORCE_PATH_STYLE=${S3_FORCE_PATH_STYLE}
-    ENV ACTIVATED_PROVIDERS=${ACTIVATED_PROVIDERS}
-    COPY . .
-    RUN bun run build
-    
-    FROM oven/bun:1 AS runtime
-    WORKDIR /app
-    ARG PUBLIC_WEBAPP_VERSION=dev-local
-    ARG PUBLIC_WEBAPP_GIT_TAG=
-    ARG PUBLIC_WEBAPP_COMMIT_SHA=
-    ARG PUBLIC_WEBAPP_RELEASED_AT=
-    COPY --from=builder /app/build build/
-    COPY --from=deps /app/node_modules node_modules/
-    COPY --from=builder /app/package.json ./
-    COPY --from=builder /app/drizzle.config.ts ./
-    COPY --from=builder /app/drizzle ./drizzle
-    COPY --from=builder /app/scripts ./scripts
-    COPY --from=builder /app/src/lib/server/config/infrastructure.shared.js ./src/lib/server/config/infrastructure.shared.js
-    COPY --from=builder /app/src/lib/server/infrastructure/db/schema.ts ./src/lib/server/infrastructure/db/schema.ts
-    EXPOSE 3000
-    ENV NODE_ENV=production
-    ENV PUBLIC_WEBAPP_VERSION=${PUBLIC_WEBAPP_VERSION}
-    ENV PUBLIC_WEBAPP_GIT_TAG=${PUBLIC_WEBAPP_GIT_TAG}
-    ENV PUBLIC_WEBAPP_COMMIT_SHA=${PUBLIC_WEBAPP_COMMIT_SHA}
-    ENV PUBLIC_WEBAPP_RELEASED_AT=${PUBLIC_WEBAPP_RELEASED_AT}
-    CMD bun run db:migrate && bun ./build
-
-Click **"Commit changes"**.
-
-# Part 3 – Turso (Database)
+# Part 1. – Turso (Database)
 
 1. Go to [turso.tech](https://turso.tech) → **"Start for free"** → sign in with GitHub
 2. Click **"Create Database"**
@@ -108,7 +26,7 @@ Click **"Commit changes"**.
    
     LIBSQL_AUTH_TOKEN = eyJ...
 
-# Part 4 – Backblaze B2 (File Storage)
+# Part 2 – Backblaze B2 (File Storage)
 
 1. Go to [backblaze.com](https://www.backblaze.com/b2/cloud-storage.html) → **"Sign Up for Free"** (no credit card needed)
 2. In the dashboard → **"Buckets"** → **"Create a Bucket"**
@@ -116,12 +34,12 @@ Click **"Commit changes"**.
 4. Go to **"App Keys"** → **"Add a New Application Key"**
 5. Save the 3 values immediately (shown only once!):
 
-# Part 5 – Render (Deploy the App)
+# Part 3 – Render (Deploy the App)
 
 1. Go to [render.com](https://render.com) → **"Get Started for Free"** → sign in with GitHub
 2. **"New +"** → **"Web Service"**
-3. Select your forked Sake repository → **"Connect"**
-4. Configure the service:
+3. Go to external repo and paste this link: https://github.com/ThePixelPro366/Sake/
+5. Configure the service:
    ```Name:       sake
    Region:     Closest Place To your Region
    Branch:     master
@@ -167,7 +85,7 @@ Click **"Commit changes"**.
 
 # Updates
 
-Since you forked your own repository, you’ll need to update it whenever the original repository is updated. You’ll see a message at the top of your repo saying: ‘This branch is … commits ahead and … behind.’ If there is a number before ‘behind,’ click ‘Sync’ and then ‘Merge’ (**not ‘Discard commits’!**).
+The repo you cloned is my fork and I will try my best to Update everything as soon as possible 
 
 # Free Tier Sleep
 
