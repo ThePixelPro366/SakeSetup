@@ -104,7 +104,8 @@ Click **"Commit changes"**.
 3. Click on your new database → **"Connect"** → **"Generate Token"**
 4. Save these two values:
 
-    LIBSQL_URL        = libsql://sake-db-YOURNAME.turso.io 
+    LIBSQL_URL        = libsql://sake-db-YOURNAME.turso.io
+   
     LIBSQL_AUTH_TOKEN = eyJ...
 
 # Part 4 – Backblaze B2 (File Storage)
@@ -113,7 +114,7 @@ Click **"Commit changes"**.
 2. In the dashboard → **"Buckets"** → **"Create a Bucket"**
 3. Note your **endpoint URL** shown on the bucket page, e.g.:
 4. Go to **"App Keys"** → **"Add a New Application Key"**
-5. Save these immediately (shown only once!):
+5. Save the 3 values immediately (shown only once!):
 
 # Part 5 – Render (Deploy the App)
 
