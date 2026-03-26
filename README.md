@@ -139,10 +139,8 @@ Click **"Commit changes"**.
 |S3\_ACCESS\_KEY\_ID|your Backblaze Key ID(0065d4f1a2b....)|
 |S3\_SECRET\_ACCESS\_KEY|your Backblaze Secret Key(Kp8fG7hJ6l9qR3sT2uV0wXyZ1a....)|
 |S3\_FORCE\_PATH\_STYLE|true|
-|ACTIVATED\_PROVIDERS|openlibrary,gutenberg|
+|ACTIVATED\_PROVIDERS|openlibrary,gutenberg,zlib|
 |PORT|10000|
-|HOST|[0.0.0.0](http://0.0.0.0)|
-|ORIGIN|[https://sake-YOURNAME.onrender.com](https://sake-YOURNAME.onrender.com)|
 
 6. Click **"Create Web Service"**
 
