@@ -121,8 +121,13 @@ Click **"Commit changes"**.
 1. Go to [render.com](https://render.com) → **"Get Started for Free"** → sign in with GitHub
 2. **"New +"** → **"Web Service"**
 3. Select your forked Sake repository → **"Connect"**
-4. Configure the service:Name:       sake Region:     Closed Place To your Region Branch:     master Root Dir:   sake Runtime:    Docker
-5. Scroll down to **"Environment Variables"** and add all of these:
+4. Configure the service:
+   Name:       sake
+   Region:     Closest Place To your Region
+   Branch:     master
+   Root Dir:   sake
+   Runtime:    Docker
+10. Scroll down to **"Environment Variables"** and add all of these:
 
 |Key|Value|
 |:-|:-|
