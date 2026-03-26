@@ -38,7 +38,7 @@ To see more about Sake, check out the [official repository](https://github.com/S
 
 1. Go to [render.com](https://render.com) → **"Get Started for Free"** → sign in with GitHub
 2. **"New +"** → **"Web Service"**
-3. Go to external repo and paste this link: https://github.com/ThePixelPro366/Sake/
+3. Go to public repo and paste this link: https://github.com/ThePixelPro366/Sake/
 5. Configure the service:
    ```Name:       sake
    Region:     Closest Place To your Region
@@ -89,7 +89,7 @@ The repo you cloned is my fork and I will try my best to Update everything as so
 
 # Free Tier Sleep
 
-Render's free tier pauses the app after 15 minutes of inactivity. The first request after a pause takes \~2-3+ minutes to wake up. This is normal and does not trigger a redeploy.
+Render's free tier pauses the app after 15 minutes of inactivity. The first request after a pause takes \~30 seconds to wake up. This is normal and does not trigger a redeploy.
 
 # Free Tier Limits
 
