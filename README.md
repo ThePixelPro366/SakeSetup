@@ -104,8 +104,6 @@ Click **"Commit changes"**.
 3. Click on your new database → **"Connect"** → **"Generate Token"**
 4. Save these two values:
 
-
-
     LIBSQL_URL        = libsql://sake-db-YOURNAME.turso.io 
     LIBSQL_AUTH_TOKEN = eyJ...
 
