@@ -133,8 +133,8 @@ Click **"Commit changes"**.
 |:-|:-|
 |LIBSQL\_URL|libsql://sake-db-YOURNAME.turso.io|
 |LIBSQL\_AUTH\_TOKEN|your Turso token(eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX...)|
-|S3\_ENDPOINT|[https://s3.eu-central-003.backblazeb2.com](https://s3.eu-central-003.backblazeb2.com)|
-|S3\_REGION|eu-central-003|
+|S3\_ENDPOINT|Your endpoint url(fpund in the bucket overview|
+|S3\_REGION|your region|
 |S3\_BUCKET|sake-storage|
 |S3\_ACCESS\_KEY\_ID|your Backblaze Key ID(0065d4f1a2b....)|
 |S3\_SECRET\_ACCESS\_KEY|your Backblaze Secret Key(Kp8fG7hJ6l9qR3sT2uV0wXyZ1a....)|
