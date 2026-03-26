@@ -167,6 +167,10 @@ Click **"Commit changes"**.
 
 # Important Notes
 
+# Updates
+
+Since you forked your own repository, you’ll need to update it whenever the original repository is updated. You’ll see a message at the top of your repo saying: ‘This branch is … commits ahead and … behind.’ If there is a number before ‘behind,’ click ‘Sync’ and then ‘Merge’ (**not ‘Discard commits’!**).
+
 # Free Tier Sleep
 
 Render's free tier pauses the app after 15 minutes of inactivity. The first request after a pause takes \~2-3+ minutes to wake up. This is normal and does not trigger a redeploy.
